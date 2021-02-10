@@ -1,5 +1,9 @@
-import { Container } from '@material-ui/core'
+import { Container, Paper } from '@material-ui/core'
 
-const Page = ({ children }) => <Container>{children}</Container>
+const Page = ({ children }) => (
+  <Container>
+    <Paper>{children}</Paper>
+  </Container>
+)
 
 export default Page

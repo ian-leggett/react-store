@@ -1,10 +1,17 @@
 import React from 'react'
-import { ThemeProvider, withStyles } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import theme from '../theme'
+import NProgress from 'nprogress'
+import Router from 'next/router'
 
+import theme from '../theme'
+import '../components/styles/nprogress.css'
 import Header from '../components/Header'
 import Page from '../components/Page'
+
+Router.events.on('routeChangeStart', () => NProgress.start())
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 const MyApp = ({ Component, pageProps }) => {
   React.useEffect(() => {
