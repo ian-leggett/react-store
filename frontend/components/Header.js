@@ -1,19 +1,27 @@
 import Link from 'next/link'
 import { Home } from '@material-ui/icons'
-import { AppBar, Toolbar, IconButton } from '@material-ui/core'
+import { AppBar, Toolbar, IconButton, Container } from '@material-ui/core'
+import styled from 'styled-components'
 
 import Nav from './Nav'
 
+const StyledToolbar = styled(Toolbar)`
+  padding-left: 0;
+  padding-right: 0;
+`
+
 const Header = () => (
   <AppBar position="static">
-    <Toolbar>
-      <Link href="/">
-        <IconButton edge="start" color="inherit" aria-label="home">
-          <Home fontSize="large" />
-        </IconButton>
-      </Link>
-      <Nav />
-    </Toolbar>
+    <Container>
+      <StyledToolbar>
+        <Link href="/">
+          <IconButton edge="start" color="inherit" aria-label="home">
+            <Home fontSize="large" />
+          </IconButton>
+        </Link>
+        <Nav />
+      </StyledToolbar>
+    </Container>
   </AppBar>
 )
 

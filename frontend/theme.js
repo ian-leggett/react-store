@@ -8,25 +8,8 @@ let theme = createMuiTheme({
       dark: '#006db3',
     },
   },
-  typography: {
-    h5: {
-      fontWeight: 500,
-      fontSize: 26,
-      letterSpacing: 0.5,
-    },
-  },
   shape: {
-    borderRadius: 8,
-  },
-  props: {
-    MuiTab: {
-      disableRipple: true,
-    },
-  },
-  mixins: {
-    toolbar: {
-      minHeight: 48,
-    },
+    borderRadius: 4,
   },
 })
 

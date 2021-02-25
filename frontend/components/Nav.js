@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import { useTheme } from '@material-ui/core/styles'
-
 const StyledNav = styled('nav')`
   ul {
     display: flex;
@@ -12,8 +10,8 @@ const StyledNav = styled('nav')`
   }
   a {
     display: inline-block;
-    padding: ${({ theme }) => theme.spacing(2)}px;
-    color: ${({ theme }) => theme.palette.common.white};
+    padding: ${(props) => props.theme.spacing(2)}px;
+    color: ${(props) => props.theme.palette.common.white};
     &:hover {
       opacity: 0.8;
     }
@@ -21,9 +19,8 @@ const StyledNav = styled('nav')`
 `
 
 const Nav = () => {
-  const theme = useTheme()
   return (
-    <StyledNav theme={theme}>
+    <StyledNav>
       <ul>
         <li>
           <Link href="/products" color="inherit">

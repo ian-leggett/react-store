@@ -1,3 +1,11 @@
-export default function SellPage() {
-  return <div>Sell</div>
+import CreateProduct from '../components/CreateProduct'
+
+const SellPage = () => {
+  return (
+    <div>
+      <CreateProduct />
+    </div>
+  )
 }
+
+export default SellPage
