@@ -9,12 +9,13 @@ import {
 import styled from 'styled-components'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import Router from 'next/router'
 
+import { ALL_PRODUCTS_QUERY } from './Products'
 import Form from './Form'
 
 const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
-    # Which variables are getting passed in? And What types are they
     $name: String!
     $description: String!
     $price: Int!
@@ -64,7 +65,7 @@ const FormContainer = styled('div')`
 
 const CreateProduct = () => {
   const validationSchema = yup.object({
-    name: yup.string('Enter your name').required('name is required'),
+    name: yup.string('Enter your name').required('Name is required'),
     image: yup
       .string('You must include an image')
       .required('Image is required'),
@@ -83,7 +84,11 @@ const CreateProduct = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async () => {
-      await createProduct()
+      const res = await createProduct()
+      console.log('yes')
+      Router.push({
+        pathname: `/product/${res.data.createProduct.id}`
+      })
     },
   })
 
@@ -91,6 +96,7 @@ const CreateProduct = () => {
     CREATE_PRODUCT_MUTATION,
     {
       variables: formik.values,
+      refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
     }
   )
 
@@ -99,7 +105,7 @@ const CreateProduct = () => {
       <StyledHeader variant="h2">Create a product</StyledHeader>
       <Form
         onSubmit={formik.handleSubmit}
-        submitLabel="Create product"
+        submitLabel="Create"
         error={error}
         isSubmitting={loading}
       >
@@ -164,7 +170,6 @@ const CreateProduct = () => {
             helperText={formik.touched.price && formik.errors.price}
             fullWidth
             margin="dense"
-            required
           />
         </FormControl>
       </Form>

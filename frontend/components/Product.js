@@ -26,7 +26,7 @@ const StyledHeader = styled(Typography)`
 
 const Product = ({ product }) => (
   <StyledCard>
-    <Link href={`/`} passHref>
+    <Link href={`/product/${product.id}`} passHref>
       <CardActionArea>
         <CardMedia
           image={product?.photo?.image?.publicUrlTransformed}
@@ -42,8 +42,10 @@ const Product = ({ product }) => (
       </CardActionArea>
     </Link>
     <CardActions>
-      <Link href={`/`} passHref>
-        <Button>{product.name}</Button>
+      <Link href={`/product/${product.id}`} passHref>
+        <Button variant="contained" color="primary">
+          {product.name}
+        </Button>
       </Link>
     </CardActions>
   </StyledCard>
