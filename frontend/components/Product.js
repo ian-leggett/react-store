@@ -12,6 +12,8 @@ import {
 } from '@material-ui/core'
 import Link from 'next/link'
 
+import DeleteProduct from './DeleteProduct'
+
 const StyledCard = styled(Card)`
   .MuiCardMedia-root {
     height: 0;
@@ -44,9 +46,24 @@ const Product = ({ product }) => (
     <CardActions>
       <Link href={`/product/${product.id}`} passHref>
         <Button variant="contained" color="primary">
-          {product.name}
+          View
         </Button>
       </Link>
+      <Link
+        href={{
+          pathname: 'update',
+          query: {
+            id: product.id,
+          },
+        }}
+        passHref
+      >
+        <Button variant="contained" color="secondary">
+          Edit
+        </Button>
+      </Link>
+
+      <DeleteProduct id={product.id}>Delete</DeleteProduct>
     </CardActions>
   </StyledCard>
 )
