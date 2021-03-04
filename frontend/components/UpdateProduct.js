@@ -127,7 +127,7 @@ const UpdateProduct = ({ id }) => {
           disabled={updateLoading}
           aria-busy={updateLoading}
         >
-          <FormLabel component="legend">Create product form</FormLabel>
+          <FormLabel component="legend">Update product form</FormLabel>
           <TextField
             id="name"
             name="name"

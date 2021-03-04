@@ -10,11 +10,12 @@ import {
   statelessSessions,
 } from '@keystone-next/keystone/session'
 import { insertSeedData } from './seed-data'
+import { sendPasswordResetEmail } from './lib/mail'
 // import { permissionsList } from './schemas/fields'
 // import { Role } from './schemas/Role'
 // import { OrderItem } from './schemas/OrderItem'
 // import { Order } from './schemas/Order'
-// import { CartItem } from './schemas/CartItem'
+import { CartItem } from './schemas/CartItem'
 // import { ProductImage } from './schemas/ProductImage'
 // import { User } from './schemas/User'
 // import { insertSeedData } from './seed-data'
@@ -38,12 +39,13 @@ const { withAuth } = createAuth({
     fields: ['name', 'email', 'password'],
     // TODO: Add in inital roles here
   },
-  // passwordResetLink: {
-  //   async sendToken(args) {
-  //     // send the email
-  //     await sendPasswordResetEmail(args.token, args.identity);
-  //   },
-  // },
+  passwordResetLink: {
+    async sendToken(args) {
+      await sendPasswordResetEmail(args.token, args.identity)
+      // send the email
+      // await sendPasswordResetEmail(args.token, args.identity);
+    },
+  },
 })
 
 export default withAuth(
@@ -68,7 +70,7 @@ export default withAuth(
       User,
       Product,
       ProductImage,
-      //   schema items go in here
+      CartItem,
     }),
     ui: {
       // Show the ui only for peole who pass this test

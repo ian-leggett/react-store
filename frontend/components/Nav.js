@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import { useUser } from '../components/User'
+import SignOut from '../components/SignOut'
+
 const StyledNav = styled('nav')`
   ul {
     display: flex;
@@ -19,6 +22,8 @@ const StyledNav = styled('nav')`
 `
 
 const Nav = () => {
+  const user = useUser()
+
   return (
     <StyledNav>
       <ul>
@@ -27,15 +32,29 @@ const Nav = () => {
             Products
           </Link>
         </li>
-        <li>
-          <Link href="/sell">Sell</Link>
-        </li>
-        <li>
-          <Link href="/orders">Orders</Link>
-        </li>
-        <li>
-          <Link href="/account">Account</Link>
-        </li>
+        {user && (
+          <>
+            <li>
+              <Link href="/sell">Sell</Link>
+            </li>
+            <li>
+              <Link href="/orders">Orders</Link>
+            </li>
+            <li>
+              <Link href="/account">Account</Link>
+            </li>
+            <li>
+              <SignOut>Sign out</SignOut>
+            </li>
+          </>
+        )}
+        {!user && (
+          <>
+            <li>
+              <Link href="/signin">Sign in</Link>
+            </li>
+          </>
+        )}
       </ul>
     </StyledNav>
   )

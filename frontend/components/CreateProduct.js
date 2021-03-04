@@ -85,7 +85,6 @@ const CreateProduct = () => {
     validationSchema: validationSchema,
     onSubmit: async () => {
       const res = await createProduct()
-      console.log('yes')
       Router.push({
         pathname: `/product/${res.data.createProduct.id}`
       })
