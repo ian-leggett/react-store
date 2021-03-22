@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core'
 import Link from 'next/link'
 
+import AddToCart from './AddToCart'
 import DeleteProduct from './DeleteProduct'
 
 const StyledCard = styled(Card)`
@@ -49,6 +50,7 @@ const Product = ({ product }) => (
           View
         </Button>
       </Link>
+      <AddToCart id={product.id} />
       <Link
         href={{
           pathname: 'update',

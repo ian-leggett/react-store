@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const CartStyles = styled.div`
   padding: 20px;
@@ -8,6 +8,7 @@ const CartStyles = styled.div`
   height: 100%;
   top: 0;
   right: 0;
+  color: #000;
   width: 40%;
   min-width: 500px;
   bottom: 0;
@@ -42,6 +43,6 @@ const CartStyles = styled.div`
     list-style: none;
     overflow: scroll;
   }
-`;
+`
 
-export default CartStyles;
+export default CartStyles

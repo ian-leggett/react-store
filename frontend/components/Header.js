@@ -4,6 +4,8 @@ import { AppBar, Toolbar, IconButton, Container } from '@material-ui/core'
 import styled from 'styled-components'
 
 import Nav from './Nav'
+import Cart from './Cart'
+import Search from './Search'
 
 const StyledToolbar = styled(Toolbar)`
   padding-left: 0;
@@ -22,6 +24,8 @@ const Header = () => (
         <Nav />
       </StyledToolbar>
     </Container>
+    <Cart />
+    <Search />
   </AppBar>
 )
 

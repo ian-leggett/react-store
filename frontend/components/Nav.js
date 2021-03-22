@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import styled from 'styled-components'
+import { AddShoppingCart } from '@material-ui/icons'
 
 import { useUser } from '../components/User'
-import SignOut from '../components/SignOut'
+import { useCart } from '../lib/cartState'
+import CartCount from './CartCount'
 
 const StyledNav = styled('nav')`
   ul {
@@ -21,8 +23,30 @@ const StyledNav = styled('nav')`
   }
 `
 
+const StyledButton = styled('button')`
+  padding: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  text-decoration: underline;
+  line-height: 1.43;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+`
+
+const CartButton = styled('button')`
+  padding: 16px;
+  background: none;
+  border: none;
+  line-height: 1.43;
+  cursor: pointer;
+`
+
 const Nav = () => {
   const user = useUser()
+  const { openCart } = useCart()
 
   return (
     <StyledNav>
@@ -44,7 +68,7 @@ const Nav = () => {
               <Link href="/account">Account</Link>
             </li>
             <li>
-              <SignOut>Sign out</SignOut>
+              <StyledButton>Sign out</StyledButton>
             </li>
           </>
         )}
@@ -56,6 +80,19 @@ const Nav = () => {
           </>
         )}
       </ul>
+
+      <CartButton type="button" onClick={openCart}>
+        <AddShoppingCart />
+      </CartButton>
+      {user && (
+        <CartCount
+          count={user.cart.reduce(
+            (tally, cartItem) =>
+              tally + (cartItem.product ? cartItem.quantity : 0),
+            0
+          )}
+        />
+      )}
     </StyledNav>
   )
 }

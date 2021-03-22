@@ -12,6 +12,7 @@ import theme from '../theme'
 import '../components/styles/nprogress.css'
 import Header from '../components/Header'
 import Page from '../components/Page'
+import { CartStateProvider } from '../lib/cartState'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
@@ -28,16 +29,18 @@ const MyApp = ({ Component, pageProps, apollo }) => {
 
   return (
     <ApolloProvider client={apollo}>
-      <ThemeProvider theme={theme}>
-        <StyledThemeProvider theme={theme}>
-          <Header />
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Page>
-            <Component {...pageProps} />
-          </Page>
-        </StyledThemeProvider>
-      </ThemeProvider>
+      <CartStateProvider>
+        <ThemeProvider theme={theme}>
+          <StyledThemeProvider theme={theme}>
+            <Header />
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Page>
+              <Component {...pageProps} />
+            </Page>
+          </StyledThemeProvider>
+        </ThemeProvider>
+      </CartStateProvider>
     </ApolloProvider>
   )
 }

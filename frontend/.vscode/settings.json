@@ -3,6 +3,50 @@
     "titleBar.activeForeground": "#000",
     "titleBar.inactiveForeground": "#000000CC",
     "titleBar.activeBackground": "#FFC600",
-    "titleBar.inactiveBackground": "#FFC600CC"
+    "titleBar.inactiveBackground": "#FFC600CC",
+  },
+  "window.zoomLevel": 1,
+  "editor.fontSize": 11,
+  "editor.suggestSelection": "first",
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "eslint.lintTask.enable": true,
+  "eslint.trace.server": "messages",
+  "prettier.semi": true,
+  "prettier.trailingComma": "es5",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.arrowParens": "avoid",
+  "files.autoSave": "off",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "diffEditor.ignoreTrimWhitespace": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Cobalt2",
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "files.associations": {
+    "*.js": "javascriptreact"
   }
 }
